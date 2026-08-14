@@ -1,11 +1,11 @@
 
 import type { StockAnalysis } from '../types/analysis'
 
-const BASE_URL = 'http://localhost:8000'
+const API_URL = import.meta.env.VITE_API_URL;
 
 export async function getStockAnalysis(ticker:string): Promise<StockAnalysis> {
 
-const url = `${BASE_URL}/stock/analysis/${ticker}`
+const url = `${API_URL}/stock/analysis/${ticker}`
 
 const response = await fetch(url)
 
