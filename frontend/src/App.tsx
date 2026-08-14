@@ -13,6 +13,7 @@ function App() {
   const analysisResults = useStockAnalysis(tickers)
   const historicalResults = useHistoricalData(tickers)
   const [errorMessage, setErrorMessage] =useState("")
+  const dataReady = historicalResults.every(result => result.data)
 
 const allChartData: HistoricalData[][] = useMemo(() => {
   const result: HistoricalData[][] = []
@@ -55,6 +56,7 @@ const smallerData= useMemo(()=>{
 const colors = ["#e81a9c", "#1a9ce8", "#9ce81a", "#e89c1a"]
 
 const chart = (
+  
   <div className='chartSection'>
   <LineChart data={smallerData} width={1000} height={400}>
     <Tooltip />
@@ -130,7 +132,7 @@ const chart = (
         {errorMessage && <p className='tickerError'>{errorMessage}</p>}
         </div>
         {analysisReturn}
-        {chart}
+        {dataReady && chart}
       </div>
   )
   
