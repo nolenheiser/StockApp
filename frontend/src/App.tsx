@@ -23,7 +23,7 @@ const allChartData: HistoricalData[][] = useMemo(() => {
     } else {
       result.push([])
     }
-  }
+ }
   return result
 }, [historicalResults])
 
