@@ -6,16 +6,6 @@ import { useHistoricalData } from './hooks/useHistoricalData'
 import { LineChart, XAxis,YAxis,Line,CartesianGrid, Tooltip,Legend} from 'recharts'
 import { useMemo } from 'react'
 import { allowedTickers } from './constants'
-import express from 'express';
-import cors from 'cors';
-
-
-//Cors
-const app = express();
-
-app.use(cors({
-  origin: 'https://stock-app-steel-pi.vercel.app'
-}));
 
 function App() {
   const [inputValue, setInputValue] = useState("SPY")

@@ -21,7 +21,7 @@ origins = allowed_origins_raw.split(",")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,"https://stock-app-steel-pi.vercel.app",
+    allow_origins=origins,
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
