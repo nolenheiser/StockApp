@@ -9,13 +9,15 @@ import fmp
 from fastapi import HTTPException
 #Constants
 TRADING_DAYS_PER_YEAR = 252
-SHARPE_WINDOW_SESSIONS = 252     #Also min for beta
+SHARPE_WINDOW_SESSIONS = 252*3     
 BETA_MIN =252
 VOLATILITY_WINDOW_SESSIONS = 90    
 
 #functions
 
 #REFACTOR DATA
+
+#Drawdown over 5 year period
 async def drawdown(json_data):
     peak_price = 0
     max_drawdown = 0
@@ -27,6 +29,7 @@ async def drawdown(json_data):
         if new_drawdown>max_drawdown: max_drawdown = new_drawdown
     return max_drawdown
 
+#Volatility over 90 session window
 async def volatility(json_data):
     selected_dates = json_data[VOLATILITY_WINDOW_SESSIONS-1::-1]
     
@@ -35,6 +38,8 @@ async def volatility(json_data):
     std_prices = statistics.stdev(percent_changes)
     return std_prices*math.sqrt(TRADING_DAYS_PER_YEAR)*100
     
+
+# Sharpe ratio over past year (252 sessions)
 async def sharpe(json_data):
 
     standard_return = (await fred.get_treasury())/100
@@ -49,6 +54,8 @@ async def sharpe(json_data):
 
     return sharpe_ratio*math.sqrt(TRADING_DAYS_PER_YEAR)
 
+
+# Beta over past 5 years (252 session minimum)
 async def beta(json_data):
     s_and_p = (await fmp.get_price_data('SPY'))
     
