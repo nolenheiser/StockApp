@@ -9,7 +9,7 @@ import fmp
 from fastapi import HTTPException
 #Constants
 TRADING_DAYS_PER_YEAR = 252
-SHARPE_WINDOW_SESSIONS = 252*3     
+SHARPE_WINDOW_SESSIONS = 252*5    
 BETA_MIN =252
 VOLATILITY_WINDOW_SESSIONS = 90    
 
