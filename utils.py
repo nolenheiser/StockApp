@@ -21,13 +21,22 @@ async def fetch(url:str, params:dict):
     return response.json()
 
 
-#Returns daily percent change of stock, takes data as arg
+#Returns daily percent change of stock logorithmically, takes data as arg
 async def day_to_day_percent_change(data):
 
     daily_changes=[]
     for i,day in enumerate(data[1:], start =1):
         percent_change=(math.log(day.close)-math.log(data[i-1].close))
         daily_changes.append(percent_change)
+    return(daily_changes)
+
+#Returns daily percent change of stock simply, takes data as arg
+async def simple_returns(data):
+    daily_changes = []
+
+    for i,day in enumerate(data[1:], start=1):
+        percent_change=(day.close-data[i-1].close)/data[i-1].close
+        daily_changes.append(perecent_change)
     return(daily_changes)
 
 
