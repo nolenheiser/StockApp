@@ -48,7 +48,7 @@ async def sharpe(json_data):
 
     selected_dates = json_data[SHARPE_WINDOW_SESSIONS-1::-1]
 
-    percent_changes = await utils.day_to_day_percent_change(selected_dates)
+    percent_changes = await utils.simple_returns(selected_dates)
     daily_excess = [i-daily_standard for i in percent_changes]
     sharpe_ratio = statistics.mean(daily_excess)/statistics.stdev(daily_excess)
 
