@@ -11,7 +11,7 @@ from fastapi import HTTPException
 TRADING_DAYS_PER_YEAR = 252
 SHARPE_WINDOW_SESSIONS = 252*5    
 BETA_MIN =252
-VOLATILITY_WINDOW_SESSIONS = 90    
+VOLATILITY_WINDOW_SESSIONS = 252*3    
 
 #functions
 
@@ -29,7 +29,7 @@ async def drawdown(json_data):
         if new_drawdown>max_drawdown: max_drawdown = new_drawdown
     return max_drawdown
 
-#Volatility over 90 session window
+#Volatility over 3 year window
 async def volatility(json_data):
     selected_dates = json_data[VOLATILITY_WINDOW_SESSIONS-1::-1]
     
