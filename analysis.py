@@ -33,13 +33,13 @@ async def drawdown(json_data):
 async def volatility(json_data):
     selected_dates = json_data[VOLATILITY_WINDOW_SESSIONS-1::-1]
     
-    percent_changes = await utils.day_to_day_percent_change(selected_dates)
+    percent_changes = await utils.simple_returns(selected_dates)
 
     std_prices = statistics.stdev(percent_changes)
     return std_prices*math.sqrt(TRADING_DAYS_PER_YEAR)*100
     
 
-# Sharpe ratio over past year (252 sessions)
+# Sharpe ratio over past 5 years
 async def sharpe(json_data):
 
     standard_return = (await fred.get_treasury())/100
