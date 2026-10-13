@@ -36,7 +36,7 @@ async def simple_returns(data):
 
     for i,day in enumerate(data[1:], start=1):
         percent_change=(day.close-data[i-1].close)/data[i-1].close
-        daily_changes.append(perecent_change)
+        daily_changes.append(percent_change)
     return(daily_changes)
 
 
