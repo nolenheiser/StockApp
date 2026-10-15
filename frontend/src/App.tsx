@@ -53,7 +53,7 @@ const smallerData= useMemo(()=>{
 },[mergedChartData])
 
 
-const colors = ["#e81a9c", "#1a9ce8", "#9ce81a", "#e89c1a"]
+const colors = ["#e81a9c", "#1a9ce8", "#9ce81a", "#e89c1a", "#0affc6"]
 
 const chart = (
   
