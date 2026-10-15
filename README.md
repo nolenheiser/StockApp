@@ -6,8 +6,9 @@
 ![Stock App comparing SPY NVDA and AAPL](image.png)
 
 ## Live demo links
-* note startup may take some time based on render free tier
-Frontend: https://stock-app-git-main-nolenheiser1.vercel.app/
+* Frontend: https://stock-app-git-main-nolenheiser1.vercel.app/ 
+* Note startup may take some time based on render free tier
+
 
 ## Features
 ### Single-stock analysis
